@@ -280,7 +280,7 @@ header a:hover {
 
 .project-card h2 {
   text-decoration: none;
-  color: #054a91;
+  color: #f7f7ff;
   text-align: center;
   font-weight: bold;
   /* margin: 20px 0 10px; */
@@ -576,7 +576,7 @@ textarea{
   }
 
   footer input{
-    width: 80%;
+    width: 90%;
   } 
 
   footer button{

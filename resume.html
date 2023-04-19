@@ -18,7 +18,7 @@
     <header>
       <div class="container">
         <div id="branding">
-          <a href="index.html" id="name" data-value="Will Fant" >Will Fant</a>
+          <a href="index.html" id="name" data-value="BCHS PEP CLUB" >BCHS PEP CLUB</a>
         </div>
         <nav>
           <ul>
@@ -26,25 +26,45 @@
               <a data-value="ABOUT" href="about.html">About</a>
             </li>
             <li>
-              <a data-value="PROJECTS" href="projects.html">Projects</a>
+              <a data-value="PROJECTS" href="projects.html">Student Sections</a>
             </li>
-            <li id="current">
-              <a data-value="RESUME" href="resume.html">Resume</a>
+            <li id="current"></liid>
+              <a data-value="RESUME" href="resume.html">Pep - Rallys</a>
             </li>
           </ul>
         </nav>
       </div>
     </header>
     <!-- Resume -->
-    <section class="resume">
-        <h1>Resume</h1>
-        <a href="Pics/Resume_.pdf" download>
-        <img src="Pics/resume.png">
-        </a>
+    <section class="mainpart">
+      <h1>PEP - Rallys</h1>        <div class="slides">
+        <div>
+          <img src="./pics/IMG_0233.JPG" alt="pep leaders">
+        </div>
+        <div>
+          <img src="./pics/IMG_0137.JPG" alt="">
+        </div>
+        <div>
+          <img src="./pics/IMG_0163.JPG" alt="">
+        </div>
+        <div>
+          <img src="./pics/IMG_7994.JPG" alt="">
+        </div>
+        <div>
+          <img src="./pics/IMG_8514.JPG" alt="">
+        </div>
+        <div>
+          <img src="./pics/IMG_8586.JPG" alt="">
+        </div>
+      </div>
+      <div class="project-card">
+        <p>At pep rallies, the Barren County Trojans showcase our school spirit and pride. We dance and cheer, and our energy is contagious! Our pep rallies are the most fun in Kentucky, and you can't help but get pumped up for the game! Come see for yourself why we are the best!</p>
+      </div>
     </section>
     <!-- Footer -->
     <footer>
-      <h1>Contact me!</h1>
+      <h1>Contact us!</h1>
+      <p>Don't be shy – join the Barren County Pep Club today and show off your Trojan pride!</p>
       <div class="container">
         <form action="https://formsubmit.co/williamfant2023@gmail.com"
           method="POST">
@@ -58,19 +78,13 @@
         <br>
       </div>
       <div>
-        <a href="https://www.linkedin.com/in/william-fant/"
-          ><i class="fa-brands fa-linkedin"></i>
-        </a>
-        <a href="https://twitter.com/Willyum72513646">
+        <a href="https://twitter.com/BCHS_Section">
           <i class="fa-brands fa-square-twitter"></i>
         </a>
-        <a href="https://github.com/WilliamFant">
-          <i class="fa-brands fa-square-github"></i>
-        </a>
-        <a href="https://www.facebook.com/will.fant.96/">
+        <a href="https://www.facebook.com/profile.php?id=100087884372857">
           <i class="fa-brands fa-square-facebook"></i>
         </a>
-        <a href="https://www.instagram.com/willyum.fant/">
+        <a href="https://www.instagram.com/bchs.section/">
           <i class="fa-brands fa-square-instagram"></i>
         </a>
       </div>
@@ -93,6 +107,7 @@
               if (index < iteration) {
                 return event.target.dataset.value[index];
               }
+
               return letters[Math.floor(Math.random() * 62)];
             })
             .join("");
@@ -100,9 +115,45 @@
           if (iteration >= event.target.dataset.value.length) {
             clearInterval(interval);
           }
+
           iteration += 1 / 2;
         }, 25);
       };
     </script>
+    <script>
+      const slideGallery = document.querySelector(".slides");
+      // const slides = slideGallery.querySelectorAll("div");
+      const thumbnailContainer = document.querySelector(".thumbnails");
+      const slideCount = slides.length;
+      const slideWidth = 740;
+
+      // const highlightThumbnail = () => {
+      //   thumbnailContainer
+      //     .querySelectorAll("div.highlighted")
+      //     .forEach((el) => el.classList.remove("highlighted"));
+      //   const index = Math.floor(slideGallery.scrollLeft / slideWidth);
+      //   thumbnailContainer
+      //     .querySelector(`div[data-id="${index}"]`)
+      //     .classList.add("highlighted");
+      // };
+
+      const scrollToElement = (el) => {
+        const index = parseInt(el.dataset.id, 10);
+        slideGallery.scrollTo(index * slideWidth, 0);
+      };
+
+      thumbnailContainer.innerHTML += [...slides]
+        .map((slide, i) => `<div data-id="${i}"></div>`)
+        .join("");
+
+      thumbnailContainer.querySelectorAll("div").forEach((el) => {
+        el.addEventListener("click", () => scrollToElement(el));
+      });
+
+      slideGallery.addEventListener("scroll", (e) => highlightThumbnail());
+
+      highlightThumbnail();
+    </script>
   </body>
 </html>
+

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Barren County High School Pep Club" />
+    <meta name="author" content="Will Fant" />
+    <script
+      src="https://kit.fontawesome.com/9a43424d0e.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>BCHS Pep Club</title>
+  </head>
+  <body>
+    <!-- header -->
+    <!-- #632123 -->
+    <!-- #ffc20f -->
+    <header>
+      <div class="container">
+        <div id="branding">
+          <a href="index.html" id="name" data-value="BCHS PEP CLUB" >BCHS PEP CLUB</a>
+        </div>
+        <nav>
+          <ul>
+            <li id="current">
+              <a data-value="ABOUT" href="about.html">About</a>
+            </li>
+            <li>
+              <a data-value="PROJECTS" href="projects.html">Student Sections</a>
+            </li>
+            <li>
+              <a data-value="RESUME" href="resume.html">Pep- Rallys</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="mainpart">
+      <h1>About US</h1>        <div class="slides">
+        <div><video src="./Pics/html.mp4" autoplay loop muted /></div>
+      </div>
+      <div class="project-card">
+        <p>Are you looking to show off your school spirit and have some fun at the same time? Join the Barren County Pep Club! We are a group of enthusiastic students who love to get hyped up for our school's athletic events.</p>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+      <h1>Contact us!</h1>
+      <p>Don't be shy – join the Barren County Pep Club today and show off your Trojan pride!</p>
+      <div class="container">
+        <form action="https://formsubmit.co/williamfant2023@gmail.com"
+          method="POST">
+          <input type="text" name="name" placeholder="Name" required />
+          <input type="email" name="email" placeholder="Email" />
+          <input type="phone" name="number" placeholder="Phone Number" />
+          <br>
+          <br>
+          <button type="submit">Send</button>
+        </form>
+        <br>
+      </div>
+      <div>
+        <a href="https://twitter.com/BCHS_Section">
+          <i class="fa-brands fa-square-twitter"></i>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=100087884372857">
+          <i class="fa-brands fa-square-facebook"></i>
+        </a>
+        <a href="https://www.instagram.com/bchs.section/">
+          <i class="fa-brands fa-square-instagram"></i>
+        </a>
+      </div>
+    </footer>
+    <script>
+      const letters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+
+      let interval = null;
+
+      document.querySelector("a").onmouseover = (event) => {
+        let iteration = 0;
+
+        clearInterval(interval);
+
+        interval = setInterval(() => {
+          event.target.innerText = event.target.innerText
+            .split("")
+            .map((letter, index) => {
+              if (index < iteration) {
+                return event.target.dataset.value[index];
+              }
+
+              return letters[Math.floor(Math.random() * 62)];
+            })
+            .join("");
+
+          if (iteration >= event.target.dataset.value.length) {
+            clearInterval(interval);
+          }
+
+          iteration += 1 / 2;
+        }, 25);
+      };
+    </script>
+    <script>
+      const slideGallery = document.querySelector(".slides");
+      // const slides = slideGallery.querySelectorAll("div");
+      const thumbnailContainer = document.querySelector(".thumbnails");
+      const slideCount = slides.length;
+      const slideWidth = 740;
+
+      // const highlightThumbnail = () => {
+      //   thumbnailContainer
+      //     .querySelectorAll("div.highlighted")
+      //     .forEach((el) => el.classList.remove("highlighted"));
+      //   const index = Math.floor(slideGallery.scrollLeft / slideWidth);
+      //   thumbnailContainer
+      //     .querySelector(`div[data-id="${index}"]`)
+      //     .classList.add("highlighted");
+      // };
+
+      const scrollToElement = (el) => {
+        const index = parseInt(el.dataset.id, 10);
+        slideGallery.scrollTo(index * slideWidth, 0);
+      };
+
+      thumbnailContainer.innerHTML += [...slides]
+        .map((slide, i) => `<div data-id="${i}"></div>`)
+        .join("");
+
+      thumbnailContainer.querySelectorAll("div").forEach((el) => {
+        el.addEventListener("click", () => scrollToElement(el));
+      });
+
+      slideGallery.addEventListener("scroll", (e) => highlightThumbnail());
+
+      highlightThumbnail();
+    </script>
+  </body>
+</html>

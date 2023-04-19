@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Wills Web Design" />
+    <meta name="author" content="Will Fant" />
+    <script
+      src="https://kit.fontawesome.com/9a43424d0e.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Will Fant</title>
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <div class="container">
+        <div id="branding">
+          <a href="index.html" id="name" data-value="BCHS PEP CLUB" >BCHS PEP CLUB</a>
+        </div>
+        <nav>
+          <ul>
+            <li>
+              <a data-value="ABOUT" href="about.html">About</a>
+            </li>
+            <li id="current">
+              <a data-value="PROJECTS" href="projects.html">Student Sections</a>
+            </li>
+            <li>
+              <a data-value="RESUME" href="resume.html">Pep- Rallys</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    
+    <!-- Projects -->
+        <div class="projects">
+        <h1>Our Student Sections</h1>
+        <div id="metabytez">
+          <a href="">
+        <div class="slides">
+          <div><img src="./Pics/metabyteznobg.png" alt=""></div>
+        </div>
+        <div class="project-card">
+            <p>Work in progress! AI generated HTML, CSS and Bootstrap to make websites!</p>
+        </div>
+      </a>
+        </div>
+
+        <div id="hurtAuto">
+          <a href="https://www.hurt-auto-sales.com/">
+        <div class="slides">
+          <div><img src="./Pics/hurtautosalesnobg.png" alt=""></div>
+        </div>
+        <div class="project-card">
+            <p>A full website updated weekly for a local car lot.</p>
+        </div>
+      </a>
+        </div>
+
+        <div id="webaward">
+          <a href="https://williamfant.github.io/WebDevAward/">
+            <div class="slides">
+              <div class="cont">
+                <div id="parent">
+                  <div class="background">
+                    <code>
+                      <span class="selector">WebDevelopment</span>
+                      <!-- <span class="punctuation">{</span> -->
+                      <i id="trophy" class="fa-solid fa-trophy">
+                      </i>
+                      <br>
+                      <span class="property">Award</span>
+                    </code>
+                </div>
+              </div>
+            </div>
+            <div class="project-card">
+              <p>3D award that reacts to the mouses position on the screen and moves to face it.</p>
+            </div>
+          </a>
+        </div>
+        </div>
+
+        <div id="webdesign">
+          <a href="https://williamfant.github.io/fullwebpageproject/">
+          <div class="slides">
+            <div><img src="Pics/willswebdesignd.png" alt=""></div>
+          </div>
+          <div class="project-card">
+              <p>My personal web development agency website.</p>
+            </a>
+          </div>
+        </a>
+        </div>
+
+        <div id="guessgame" >
+          <div class="slides">
+            <div id="game">
+              <p id="points"></p>
+              <h3>Enter all of your choices divided by comma ",".</h3>
+              <textarea id="textarea" placeholder="Enter choices here..."></textarea>
+              <input type="text" id="input" placeholder="What do you think will be picked?">
+              <div id="tags">
+              </div>
+            </div>
+          </div>
+          <a href="https://williamfant.github.io/randomchoicegame/">
+          <div class="project-card">
+              <p>A game you can guess what number is selected from 0 to the number you input.</p>
+          </div>
+          </a>
+        </div>
+
+        <div id="loremwars">
+          <a href="https://williamfant.github.io/loremwars/">
+          <div class="slides">
+            <div><img src="./Pics/loremwars.png" alt=""></div>
+          </div>
+          <div class="project-card">
+              <p>3D moving text that looks like the beginning of a Star Wars movie using lorem as text.</p>
+          </div>
+        </a>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+      <h1>Contact us!</h1>
+      <p>Don't be shy – join the Barren County Pep Club today and show off your Trojan pride!</p>
+      <div class="container">
+        <form action="https://formsubmit.co/williamfant2023@gmail.com"
+          method="POST">
+          <input type="text" name="name" placeholder="Name" required />
+          <input type="email" name="email" placeholder="Email" />
+          <input type="phone" name="number" placeholder="Phone Number" />
+          <br>
+          <br>
+          <button type="submit">Send</button>
+        </form>
+        <br>
+      </div>
+      <div>
+        <a href="https://twitter.com/BCHS_Section">
+          <i class="fa-brands fa-square-twitter"></i>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=100087884372857">
+          <i class="fa-brands fa-square-facebook"></i>
+        </a>
+        <a href="https://www.instagram.com/bchs.section/">
+          <i class="fa-brands fa-square-instagram"></i>
+        </a>
+      </div>
+    </footer>
+    <script>
+      const letters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+
+      let interval = null;
+
+      document.querySelector("a").onmouseover = (event) => {
+        let iteration = 0;
+
+        clearInterval(interval);
+
+        interval = setInterval(() => {
+          event.target.innerText = event.target.innerText
+            .split("")
+            .map((letter, index) => {
+              if (index < iteration) {
+                return event.target.dataset.value[index];
+              }
+
+              return letters[Math.floor(Math.random() * 62)];
+            })
+            .join("");
+
+          if (iteration >= event.target.dataset.value.length) {
+            clearInterval(interval);
+          }
+
+          iteration += 1 / 2;
+        }, 25);
+      };
+    </script>
+    <script>
+      const parent = document.getElementById("parent");
+      document.addEventListener("mousemove", (e) => {
+        rotateElement(e, parent);
+      });
+      function rotateElement(event, element) {
+        //get mouse position
+        const x = event.clientX;
+        const y = event.clientY;
+      
+        //find middle
+        const middleX = window.innerWidth / 4;
+        const middleY = window.innerHeight / 2;
+      
+        //get offset fromm middle
+        const offsetX = ((x - middleX) / middleX) * 25;
+        const offsetY = ((y - middleY) / middleY) * 45;
+        //   console.log(offsetX, offsetY);
+      
+        element.style.setProperty("--rotateX", -1 * offsetY + "deg");
+        element.style.setProperty("--rotateY", offsetX + "deg");
+      }
+  </script>
+  <script>
+    const tagsEL = document.getElementById('tags')
+  const textarea = document.getElementById('textarea')
+  const pointsDisplay = document.createElement('p')
+
+  let points = 0;
+  let userInput = '';
+
+  textarea.focus()
+
+  textarea.addEventListener('keyup',(e) => {
+      createTags(e.target.value)
+      if(e.key === 'Enter'){
+          randomSelect()
+      }
+  })
+
+  input.addEventListener('keyup',(e) => {
+
+      if(e.key === 'Enter'){
+          setTimeout(() =>{
+              e.target.value = ''
+          }, 1000)
+          randomSelect()
+      }
+  })
+
+  input.addEventListener('input', (e) => {
+      userInput = e.target.value.trim();
+  })
+
+  function createTags(input){
+      const tags = input.split(',').filter(tag => tag.trim() !== '').map(tag => tag.trim())
+      tagsEL.innerHTML = ''
+      tags.forEach(tag => {
+          const tagEl = document.createElement('span')
+          tagEl.classList.add('tag')
+          tagEl.innerText = tag
+          tagsEL.appendChild(tagEl)
+      })
+  }
+
+  function randomSelect(){
+      const times = 30
+
+      const interval = setInterval(() =>{
+          const randomTag = pickRandomTag()
+
+          highlightTag(randomTag)
+          setTimeout(() => {
+              unHighlightTag(randomTag)
+          }, 100)
+      }, 100);
+
+      setTimeout(() =>{
+          clearInterval(interval)
+          setTimeout(() => {
+              const randomTag = pickRandomTag()
+              highlightTag(randomTag)
+
+              // Compare the last highlighted tag with the user's input and update points
+              if (randomTag.innerText === userInput) {
+                  points = points + tags.length;
+                  highlightTagRed(randomTag)
+              }
+              if (userInput === '') {
+                  points = points;
+              }else if(randomTag.innerText !== userInput) {
+                  points = points - 1;
+              }
+              updatePointsDisplay(); // Update the points display
+
+          }, 100)
+      }, times * 100)
+  }
+
+  function pickRandomTag() {
+      const tags = document.querySelectorAll('.tag')
+      return tags[Math.floor(Math.random() * tags.length)]
+  }
+
+  function highlightTag(tag){
+      tag.classList.add('highlight')
+  }
+
+  function highlightTagred(tag){
+      tag.classList.add('highlightred')
+  }
+
+  function unHighlightTag(tag) {
+      tag.classList.remove('highlight')
+  }
+
+  function updatePointsDisplay() {
+      pointsDisplay.innerText = `${points}`;
+      document.body.appendChild(pointsDisplay);
+  }
+  </script>
+  </body>
+</html>
